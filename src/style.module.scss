@@ -1,0 +1,37 @@
+@mixin fill-background-image($url, $color) {
+  $base-color: str-slice(inspect($color), 2);
+  background-image: unquote('url("' + $url + "?fill=%23" + $base-color +'")');
+}
+
+.icon {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: #fff;
+  border-radius: 5px;
+  padding: 3px;
+  background: url("./images/fireworks.svg");
+  background-repeat: no-repeat;
+}
+
+.iconFilled {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+  padding: 3px;
+  @include fill-background-image('./images/fireworks.svg', #028da8);
+  background-repeat: no-repeat;
+}
+
+.inlineIcon {
+  display: block;
+  text-align: center;
+  background: #71bd72;
+  width: 100%;
+  padding: 20px 0;
+
+  svg {
+    height: 64px;
+  }
+}

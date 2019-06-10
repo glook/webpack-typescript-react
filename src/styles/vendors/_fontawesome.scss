@@ -1,0 +1,4 @@
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+@import "~@fortawesome/fontawesome-free/scss/variables";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+.#{$fa-css-prefix}-check:before { content: fa-content($fa-var-check); }
