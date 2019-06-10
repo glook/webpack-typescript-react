@@ -1,20 +1,21 @@
 /**
  * Created by: Andrey Polyakov (andrey@polyakov.im)
  */
-import webpack from 'webpack';
+import {HotModuleReplacementPlugin} from 'webpack';
+import devProxyConfig from './resources/devProxy';
+import {defaultPort as port} from './constants/devproxy';
 
 export default {
     devtool: '#cheap-module-source-map',
     stats: false,
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
+        new HotModuleReplacementPlugin(),
     ],
     devServer: {
         publicPath: '/',
-        contentBase: '/app',
-        port: 8080,
+        port,
         historyApiFallback: true,
         headers: {'Access-Control-Allow-Origin': '*'},
-        proxy: {},
+        proxy: devProxyConfig,
     },
 };

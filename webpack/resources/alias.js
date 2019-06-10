@@ -1,6 +1,8 @@
 /**
  * Created by: Andrey Polyakov (andrey@polyakov.im)
  */
+import path from 'path';
+
 export default {
-    main: '../src/index.tsx',
+    '@src': path.resolve(__dirname, '../../src'),
 };

@@ -7,6 +7,8 @@ import devConfig from './webpack/dev';
 import prodConfig from './webpack/prod';
 import env from './webpack/env';
 
-export default () => env.isProd
+const {isProd} = env;
+
+export default () => isProd
     ? merge(baseConfig, prodConfig)
     : merge(baseConfig, devConfig);

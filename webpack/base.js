@@ -3,17 +3,12 @@
  */
 import path from 'path';
 import entry from './entry';
-import webpackAlias from './alias';
 import env from './env';
 import plugins from './plugins';
 import rules from './loaders';
 import optimization from './optimization';
-
-const {
-    resolve: {
-        alias,
-    },
-} = webpackAlias;
+import {devServerUrl} from './constants/devproxy';
+import resolve from './resources/resolve';
 
 export default {
     context: __dirname,
@@ -25,7 +20,7 @@ export default {
     output: {
         path: path.join(__dirname, '../dist'),
         publicPath: env.isDevServer
-            ? 'http://0.0.0.0:8080/'
+            ? devServerUrl
             : './',
         filename: '[name].[hash].js',
     },
@@ -33,8 +28,6 @@ export default {
         rules,
     },
     plugins,
-    resolve: {
-        alias,
-    },
+    resolve,
     optimization,
 };
