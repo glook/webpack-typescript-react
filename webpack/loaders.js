@@ -1,39 +1,18 @@
 /**
  * Created by: Andrey Polyakov (andrey@polyakov.im)
  */
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import env from './env';
-import resources from './sassResources';
-
-const cssLoader = {
-    loader: 'css-loader',
-    options: {
-        sourceMap: env.isProd,
-    },
-};
-
-const postCssLoader = {
-    loader: 'postcss-loader',
-    options: {
-        config: {
-            path: __dirname,
-        },
-        sourceMap: env.isProd,
-    },
-};
-
-const miniCssExtractLoader = env.isProd
-    ? {
-        loader: MiniCssExtractPlugin.loader,
-        options: {
-            hmr: env.isDevServer,
-        },
-    }
-    : 'style-loader';
+import {
+    miniCssExtractLoader,
+    cssModulesLoader,
+    postCssLoader,
+    sassLoader,
+    lessLoader,
+    cssLoader,
+} from './constants/loadersList.js';
 
 export default [
     {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         use: [
             'thread-loader',
             'babel-loader',
@@ -42,55 +21,31 @@ export default [
         exclude: /node_modules/,
     },
     {
-        test: /\.module\.s(c|a)ss$/,
+        test: /\.module\.s([ca])ss$/,
         use: [
             miniCssExtractLoader,
-            {
-                loader: 'css-loader',
-                options: {
-                    modules: true,
-                    sourceMap: env.isDev,
-                    localIdentName: '[local]__[hash:base64:5]',
-                },
-            },
+            cssModulesLoader,
             postCssLoader,
-            {
-                loader: 'sass-loader',
-                options: {
-                    sourceMap: true,
-                },
-            },
-            resources.length
-                ? {
-                    loader: 'sass-resources-loader',
-                    options: {
-                        resources,
-                    },
-                }
-                : null,
+            ...sassLoader,
         ].filter(x => !!x),
     },
     {
-        test: /\.s(c|a)ss$/,
+        test: /\.s([ca])ss$/,
         exclude: /\.module.scss$/,
         use: [
             miniCssExtractLoader,
             cssLoader,
             postCssLoader,
-            {
-                loader: 'sass-loader',
-                options: {
-                    sourceMap: true,
-                },
-            },
-            resources.length
-                ? {
-                    loader: 'sass-resources-loader',
-                    options: {
-                        resources,
-                    },
-                }
-                : null,
+            ...sassLoader,
+        ].filter(x => !!x),
+    },
+    {
+        test: /\.less$/,
+        use: [
+            miniCssExtractLoader,
+            cssLoader,
+            postCssLoader,
+            lessLoader,
         ].filter(x => !!x),
     },
     {

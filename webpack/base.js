@@ -3,17 +3,12 @@
  */
 import path from 'path';
 import entry from './entry';
-import webpackAlias from './alias';
+import alias from './resources/alias';
 import env from './env';
 import plugins from './plugins';
 import rules from './loaders';
 import optimization from './optimization';
 
-const {
-    resolve: {
-        alias,
-    },
-} = webpackAlias;
 
 export default {
     context: __dirname,
