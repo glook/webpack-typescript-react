@@ -3,6 +3,7 @@
  */
 import {HotModuleReplacementPlugin} from 'webpack';
 import devProxyConfig from './resources/devProxy';
+import {defaultPort as port} from './constants/devproxy';
 
 export default {
     devtool: '#cheap-module-source-map',
@@ -12,7 +13,7 @@ export default {
     ],
     devServer: {
         publicPath: '/',
-        port: 8080,
+        port,
         historyApiFallback: true,
         headers: {'Access-Control-Allow-Origin': '*'},
         proxy: devProxyConfig,
