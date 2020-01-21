@@ -4,11 +4,11 @@
 import {ProvidePlugin, DefinePlugin} from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import path from 'path';
 import env from './env';
 import provideList from './resources/provide';
 import defineList from './resources/define';
 import htmlPluginConfg from './resources/html';
+import {CleanWebpackPlugin} from 'clean-webpack-plugin';
 
 export default [
     new MiniCssExtractPlugin({
@@ -20,4 +20,5 @@ export default [
     new HtmlWebpackPlugin(htmlPluginConfg),
     new ProvidePlugin(provideList),
     new DefinePlugin(defineList),
+    new CleanWebpackPlugin(),
 ];

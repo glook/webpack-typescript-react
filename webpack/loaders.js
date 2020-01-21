@@ -8,26 +8,24 @@ import {
     sassLoader,
     lessLoader,
     cssLoader,
+    typingsCssModulesLoader,
 } from './constants/loadersList.js';
 
 export default [
     {
         test: /\.(js|jsx)$/,
-        use: [
-            'thread-loader',
-            'babel-loader',
-            'eslint-loader',
-        ],
+        use: ['thread-loader', 'babel-loader', 'eslint-loader'],
         exclude: /node_modules/,
     },
     {
         test: /\.module\.s([ca])ss$/,
         use: [
             miniCssExtractLoader,
+            typingsCssModulesLoader,
             cssModulesLoader,
             postCssLoader,
             ...sassLoader,
-        ].filter(x => !!x),
+        ].filter((x) => !!x),
     },
     {
         test: /\.s([ca])ss$/,
@@ -37,7 +35,7 @@ export default [
             cssLoader,
             postCssLoader,
             ...sassLoader,
-        ].filter(x => !!x),
+        ].filter((x) => !!x),
     },
     {
         test: /\.less$/,
@@ -46,14 +44,11 @@ export default [
             cssLoader,
             postCssLoader,
             lessLoader,
-        ].filter(x => !!x),
+        ].filter((x) => !!x),
     },
     {
         test: /\.css$/,
-        use: [
-            miniCssExtractLoader,
-            cssLoader,
-        ],
+        use: [miniCssExtractLoader, cssLoader],
     },
     {
         test: /\.(html)$/,
@@ -66,20 +61,32 @@ export default [
     },
     {
         test: /.(png|jpg|jpeg|gif|woff|woff2|ttf|eot)$/,
-        use: [
-            'file-loader',
-        ],
+        use: ['file-loader'],
+    },
+
+    {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
     },
     {
         test: /\.svg(\?.*)?$/,
-        exclude: /\.inline.svg$/,
-        use: [
-            'file-loader',
-            'svg-transform-loader',
-        ],
+        exclude: /\.component.svg$/,
+        use: ['file-loader'],
     },
     {
-        test: /\.inline.svg$/,
-        loader: 'svg-inline-loader?classPrefix',
+        test: /\.component.svg(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+            {
+                loader: 'babel-loader',
+            },
+            {
+                loader: '@svgr/webpack',
+                options: {
+                    babel: false,
+                    icon: true,
+                },
+            },
+        ],
     },
 ];
