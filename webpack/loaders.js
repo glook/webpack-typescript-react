@@ -54,19 +54,18 @@ export default [
         test: /\.(html)$/,
         use: {
             loader: 'html-loader',
-            options: {
-                attrs: [':data-src'],
-            },
         },
     },
     {
         test: /.(png|jpg|jpeg|gif|woff|woff2|ttf|eot)$/,
         use: ['file-loader'],
     },
-
     {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        loader: 'ts-loader',
+        options: {
+            transpileOnly: true,
+        },
         exclude: /node_modules/,
     },
     {
