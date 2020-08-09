@@ -1,10 +1,7 @@
 /**
  * Created by: Andrey Polyakov (andrey@polyakov.im)
  */
-import {
-    pathRewrite,
-    httpsProxyTarget,
-} from '../constants/devproxy';
+import {httpsProxyTarget, pathRewrite} from '../constants/devproxy';
 
 export default {
     // '/world-time': {

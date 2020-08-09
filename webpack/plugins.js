@@ -1,16 +1,18 @@
 /**
  * Created by: Andrey Polyakov (andrey@polyakov.im)
  */
-import {ProvidePlugin, DefinePlugin} from 'webpack';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import {resolve} from 'path';
+
+import {CleanWebpackPlugin} from 'clean-webpack-plugin';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import {DefinePlugin, ProvidePlugin} from 'webpack';
+
 import env from './env';
-import provideList from './resources/provide';
 import defineList from './resources/define';
 import htmlPluginConfg from './resources/html';
-import {CleanWebpackPlugin} from 'clean-webpack-plugin';
-import {resolve} from 'path';
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import provideList from './resources/provide';
 
 export default [
     new MiniCssExtractPlugin({
@@ -24,10 +26,11 @@ export default [
     new DefinePlugin(defineList),
     new CleanWebpackPlugin(),
     new ForkTsCheckerWebpackPlugin({
-        reportFiles: ['../src/**/*.{ts,tsx}'],
-        tsconfig: resolve(__dirname, '../tsconfig.json'),
-        async: env.isProd,
-        silent: env.isProd,
-        eslint: true,
+        async: env.isDev,
+        typescript: {
+            configFile: resolve(__dirname, '../tsconfig.json'),
+        },
+        eslint: {enabled: true, files: '../src/**/*.{ts,tsx,js,jsx}'},
+        logger: {infrastructure: 'silent', issues: 'console'},
     }),
 ];

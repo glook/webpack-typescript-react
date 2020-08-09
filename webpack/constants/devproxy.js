@@ -5,7 +5,8 @@ import isWindows from 'is-windows';
 
 export const defaultPort = 8080;
 
-export const pathRewrite = (localUrl, remoteUrl) => (path) => path.replace(new RegExp(localUrl.replace('/', '\\/'), 'g'), remoteUrl);
+export const pathRewrite = (localUrl, remoteUrl) => (path) =>
+    path.replace(new RegExp(localUrl.replace('/', '\\/'), 'g'), remoteUrl);
 
 export const httpProxyTarget = {
     port: 80,

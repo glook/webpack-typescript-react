@@ -1,11 +1,13 @@
+import path from 'path';
+
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 /**
  * Created by: Andrey Polyakov (andrey@polyakov.im)
  */
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import devProxyConfig from './resources/devProxy';
+
 import {defaultPort as port} from './constants/devproxy';
-import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
-import path from 'path';
+import devProxyConfig from './resources/devProxy';
 
 export default {
     devtool: '#cheap-module-source-map',

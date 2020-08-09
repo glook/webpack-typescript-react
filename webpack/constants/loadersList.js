@@ -2,6 +2,7 @@
  * Created by: Andrey Polyakov (andrey@polyakov.im)
  */
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+
 import env from '../env';
 import resources from '../resources/sassResources';
 
@@ -16,8 +17,8 @@ export const cssModulesLoader = {
     ...cssLoader,
     options: {
         sourceMap: env.isDev,
-        localsConvention: "camelCaseOnly",
         modules: {
+            exportLocalsConvention: 'camelCaseOnly',
             localIdentName: '[local]__[hash:base64:5]',
         },
     },
@@ -63,7 +64,9 @@ export const lessLoader = {
     loader: 'less-loader',
     options: {
         sourceMap: true,
-        javascriptEnabled: true,
+        lessOptions: {
+            javascriptEnabled: true,
+        },
     },
 };
 

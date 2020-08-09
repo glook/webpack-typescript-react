@@ -2,12 +2,12 @@
  * Created by: Andrey Polyakov (andrey@polyakov.im)
  */
 import {
-    miniCssExtractLoader,
+    cssLoader,
     cssModulesLoader,
+    lessLoader,
+    miniCssExtractLoader,
     postCssLoader,
     sassLoader,
-    lessLoader,
-    cssLoader,
     typingsCssModulesLoader,
 } from './constants/loadersList.js';
 
@@ -38,7 +38,18 @@ export default [
         ].filter((x) => !!x),
     },
     {
+        test: /\.module.less$/,
+        use: [
+            miniCssExtractLoader,
+            typingsCssModulesLoader,
+            cssModulesLoader,
+            postCssLoader,
+            lessLoader,
+        ].filter((x) => !!x),
+    },
+    {
         test: /\.less$/,
+        exclude: /\.module.less$/,
         use: [
             miniCssExtractLoader,
             cssLoader,

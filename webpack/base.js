@@ -2,12 +2,13 @@
  * Created by: Andrey Polyakov (andrey@polyakov.im)
  */
 import path from 'path';
+
+import {devServerUrl} from './constants/devproxy';
 import entry from './entry';
 import env from './env';
-import plugins from './plugins';
 import rules from './loaders';
 import optimization from './optimization';
-import {devServerUrl} from './constants/devproxy';
+import plugins from './plugins';
 import resolve from './resources/resolve';
 
 export default {

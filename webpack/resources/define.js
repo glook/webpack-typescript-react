@@ -5,5 +5,4 @@
  *     isProd: true
  * }
  */
-export default {
-};
+export default {};
