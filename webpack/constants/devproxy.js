@@ -10,13 +10,15 @@ export const pathRewrite = (localUrl, remoteUrl) => (path) =>
 
 export const httpProxyTarget = {
     port: 80,
-    protocol: 'http:',
+    protocol: 'http',
 };
 export const httpsProxyTarget = {
     port: 443,
-    protocol: 'https:',
+    protocol: 'https',
 };
 
+export const devServerHost = isWindows() ? '127.0.0.1' : '0.0.0.0';
+
 export const devServerUrl = isWindows()
-    ? `http://127.0.0.1:${defaultPort}/`
-    : `http://0.0.0.0:${defaultPort}/`;
+    ? `http://${devServerHost}:${defaultPort}/`
+    : `http://${devServerHost}:${defaultPort}/`;
