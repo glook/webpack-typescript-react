@@ -2,19 +2,21 @@
  * Created by: Andrey Polyakov (andrey@polyakov.im)
  */
 import {
+    babelLoader,
     cssLoader,
     cssModulesLoader,
     lessLoader,
     miniCssExtractLoader,
     postCssLoader,
+    resolveUrlLoader,
     sassLoader,
     typingsCssModulesLoader,
-} from './constants/loadersList.js';
+} from './constants/loadersList';
 
 export default [
     {
         test: /\.(js|jsx)$/,
-        use: ['thread-loader', 'babel-loader', 'eslint-loader'],
+        use: ['thread-loader', babelLoader, 'eslint-loader'],
         exclude: /node_modules/,
     },
     {
@@ -24,6 +26,7 @@ export default [
             typingsCssModulesLoader,
             cssModulesLoader,
             postCssLoader,
+            resolveUrlLoader,
             ...sassLoader,
         ].filter((x) => !!x),
     },
@@ -34,6 +37,7 @@ export default [
             miniCssExtractLoader,
             cssLoader,
             postCssLoader,
+            resolveUrlLoader,
             ...sassLoader,
         ].filter((x) => !!x),
     },
@@ -44,6 +48,7 @@ export default [
             typingsCssModulesLoader,
             cssModulesLoader,
             postCssLoader,
+            resolveUrlLoader,
             lessLoader,
         ].filter((x) => !!x),
     },
@@ -54,6 +59,7 @@ export default [
             miniCssExtractLoader,
             cssLoader,
             postCssLoader,
+            resolveUrlLoader,
             lessLoader,
         ].filter((x) => !!x),
     },
@@ -87,9 +93,7 @@ export default [
     {
         test: /\.component.svg(\?v=\d+\.\d+\.\d+)?$/,
         use: [
-            {
-                loader: 'babel-loader',
-            },
+            babelLoader,
             {
                 loader: '@svgr/webpack',
                 options: {
