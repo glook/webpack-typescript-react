@@ -5,23 +5,22 @@ import path from 'path';
 
 import {devServerUrl} from './constants/devproxy';
 import entry from './entry';
-import env from './env';
+import {isDevServer, isProd} from './env';
 import rules from './loaders';
 import optimization from './optimization';
 import plugins from './plugins';
+import externals from './resources/externals';
 import resolve from './resources/resolve';
 
 export default {
     context: __dirname,
     target: 'web',
-    mode: env.isProd ? 'production' : 'development',
+    mode: isProd ? 'production' : 'development',
     entry,
     output: {
         path: path.join(__dirname, '../dist'),
-        publicPath: env.isDevServer ? devServerUrl : './',
-        filename: env.isDevServer
-            ? '[name].[hash].js'
-            : '[name].[contenthash].js',
+        publicPath: isDevServer ? devServerUrl : './',
+        filename: isDevServer ? '[name].[hash].js' : '[name].[contenthash].js',
     },
     module: {
         rules,
@@ -29,4 +28,5 @@ export default {
     plugins,
     resolve,
     optimization,
+    externals,
 };

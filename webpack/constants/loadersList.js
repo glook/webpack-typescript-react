@@ -1,24 +1,24 @@
-import {resolve} from 'path';
-
 /**
  * Created by: Andrey Polyakov (andrey@polyakov.im)
  */
+import {resolve} from 'path';
+
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-import env from '../env';
+import {isDev, isDevServer, isProd} from '../env';
 import resources from '../resources/sassResources';
 
 export const cssLoader = {
     loader: 'css-loader',
     options: {
-        sourceMap: env.isProd,
+        sourceMap: isProd,
     },
 };
 
 export const cssModulesLoader = {
     ...cssLoader,
     options: {
-        sourceMap: env.isDev,
+        sourceMap: isDev,
         modules: {
             exportLocalsConvention: 'camelCaseOnly',
             localIdentName: '[local]__[hash:base64:5]',
@@ -49,15 +49,15 @@ export const postCssLoader = {
         config: {
             path: __dirname,
         },
-        sourceMap: env.isProd,
+        sourceMap: isProd,
     },
 };
 
-export const miniCssExtractLoader = env.isProd
+export const miniCssExtractLoader = isProd
     ? {
           loader: MiniCssExtractPlugin.loader,
           options: {
-              hmr: env.isDevServer,
+              hmr: isDevServer,
           },
       }
     : 'style-loader';

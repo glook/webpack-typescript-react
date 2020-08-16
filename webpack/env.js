@@ -4,14 +4,7 @@
 import get from 'lodash/get';
 import {argv} from 'yargs';
 
-const mode = get(argv, 'env.mode', 'production');
-const isDevServer = get(argv, 'env.isDevServer', false);
-const isProd = mode === 'production';
-const isDev = !isProd;
-
-export default {
-    mode,
-    isDevServer,
-    isProd,
-    isDev,
-};
+export const mode = get(argv, 'env.mode', 'production');
+export const isDevServer = get(argv, 'env.isDevServer', false);
+export const isProd = mode === 'production';
+export const isDev = !isProd;

@@ -2,11 +2,13 @@
  * Created by: Andrey Polyakov (andrey@polyakov.im)
  */
 const {argv} = require('yargs');
+const get = require('lodash/get');
+
 module.exports = (api) => {
-    const {env} = argv;
-    const mode = env.mode ? env.mode : 'production';
+    const mode = argv ? get(argv, 'env.mode', 'production') : 'production';
     // This caches the Babel config by environment.
     api.cache.using(() => mode);
+
     return {
         presets: [
             [
