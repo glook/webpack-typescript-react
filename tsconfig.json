@@ -22,7 +22,8 @@
             "@components/*": ["src/components/*"]
         },
         "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "importsNotUsedAsValues": "preserve"
     },
     "exclude": ["node_modules", "webpack"]
 }

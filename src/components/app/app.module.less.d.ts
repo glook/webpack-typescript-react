@@ -2,13 +2,7 @@
 // Please do not change this file!
 declare namespace AppModuleLessNamespace {
     export interface IAppModuleLess {
-        file: string;
-        mappings: string;
-        names: string;
-        sources: string;
-        sourcesContent: string;
         stylesContainer: string;
-        version: string;
     }
 }
 

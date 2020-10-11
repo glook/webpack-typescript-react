@@ -12,56 +12,57 @@ import {
     sassLoader,
     typingsCssModulesLoader,
 } from './constants/loadersList';
+import {arrayFilterEmpty} from './helpers';
 
 export default [
     {
         test: /\.(js|jsx)$/,
-        use: ['thread-loader', babelLoader, 'eslint-loader'],
+        use: ['thread-loader', babelLoader],
         exclude: /node_modules/,
     },
     {
         test: /\.module\.s([ca])ss$/,
-        use: [
+        use: arrayFilterEmpty([
             miniCssExtractLoader,
             typingsCssModulesLoader,
             cssModulesLoader,
             postCssLoader,
             resolveUrlLoader,
             ...sassLoader,
-        ].filter((x) => !!x),
+        ]),
     },
     {
         test: /\.s([ca])ss$/,
         exclude: /\.module.scss$/,
-        use: [
+        use: arrayFilterEmpty([
             miniCssExtractLoader,
             cssLoader,
             postCssLoader,
             resolveUrlLoader,
             ...sassLoader,
-        ].filter((x) => !!x),
+        ]),
     },
     {
         test: /\.module.less$/,
-        use: [
+        use: arrayFilterEmpty([
             miniCssExtractLoader,
             typingsCssModulesLoader,
             cssModulesLoader,
             postCssLoader,
             resolveUrlLoader,
             lessLoader,
-        ].filter((x) => !!x),
+        ]),
     },
     {
         test: /\.less$/,
         exclude: /\.module.less$/,
-        use: [
+        use: arrayFilterEmpty([
             miniCssExtractLoader,
             cssLoader,
             postCssLoader,
             resolveUrlLoader,
             lessLoader,
-        ].filter((x) => !!x),
+        ]),
     },
     {
         test: /\.css$/,

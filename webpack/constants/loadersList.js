@@ -31,6 +31,8 @@ export const sassLoader = [
         loader: 'sass-loader',
         options: {
             sourceMap: true,
+            // Prefer `dart-sass`
+            implementation: require('sass'),
         },
     },
     resources.length
@@ -46,8 +48,8 @@ export const sassLoader = [
 export const postCssLoader = {
     loader: 'postcss-loader',
     options: {
-        config: {
-            path: __dirname,
+        postcssOptions: {
+            config: resolve(__dirname, '../postcss.config.js'),
         },
         sourceMap: isProd,
     },
