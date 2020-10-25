@@ -3,30 +3,51 @@
  */
 import path from 'path';
 
-import {devServerUrl} from './constants/devproxy';
+import {aliasItems, devServerUrl, externalItems} from './config';
 import entry from './entry';
-import {isDevServer, isProd} from './env';
-import rules from './loaders';
 import optimization from './optimization';
-import plugins from './plugins';
-import externals from './resources/externals';
-import resolve from './resources/resolve';
+import * as plugins from './plugins';
+import * as rules from './rules';
+import {isDevServer, isProd} from './utils/env';
+import {arrayFilterEmpty} from './utils/helpers';
 
 export default {
     context: __dirname,
-    target: 'web',
+    target: ['web', 'es5'],
     mode: isProd ? 'production' : 'development',
     entry,
     output: {
         path: path.join(__dirname, '../dist'),
         publicPath: isDevServer ? devServerUrl : './',
-        filename: isDevServer ? '[name].[hash].js' : '[name].[contenthash].js',
+        filename: isDevServer
+            ? '[name].[fullhash].js'
+            : '[name].[contenthash].js',
     },
     module: {
-        rules,
+        rules: arrayFilterEmpty([
+            rules.javascriptRule,
+            rules.typescriptRule,
+            rules.htmlRule,
+            rules.imagesRule,
+            rules.fontsRule,
+            rules.cssRule,
+            ...rules.lessRules,
+            ...rules.sassRules,
+            ...rules.svgRules,
+        ]),
     },
-    plugins,
-    resolve,
+    plugins: arrayFilterEmpty([
+        plugins.htmlWebpackPlugin,
+        plugins.providePlugin,
+        plugins.definePlugin,
+        plugins.forkTsCheckerWebpackPlugin,
+        plugins.esLintPlugin,
+        plugins.copyPlugin,
+    ]),
+    resolve: {
+        alias: aliasItems,
+        extensions: ['.tsx', '.ts', '.js', '.jsx'],
+    },
     optimization,
-    externals,
+    externals: externalItems,
 };

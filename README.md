@@ -1,8 +1,8 @@
-# Webpack 4 boilerplate
+# Webpack 5 boilerplate
 
 ![](https://habrastorage.org/webt/q-/lv/b0/q-lvb0d4li7cpi-hsctistlzooi.png)
 
-[Webpack 4](https://webpack.js.org/) boilerplate with support of most common loaders and modules:
+[Webpack 5](https://webpack.js.org/) boilerplate with support of most common loaders and modules:
 
 -   [babel](https://babeljs.io/)
 -   typescript (using [ForkTsCheckerWebpack](https://www.npmjs.com/package/fork-ts-checker-webpack-plugin) )
