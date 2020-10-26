@@ -1,9 +1,20 @@
 /**
  * Created by: Andrey Polyakov (andrey@polyakov.im)
+ * @see https://webpack.js.org/configuration/dev-server/#devserverproxy
  */
-import {httpsProxyTarget, pathRewrite} from '../constants/devproxy';
+import {pathRewrite} from '../utils/helpers';
 
-export default {
+const httpProxyTarget = {
+    port: 80,
+    protocol: 'http',
+};
+
+const httpsProxyTarget = {
+    port: 443,
+    protocol: 'https',
+};
+
+export const devServerProxyConfig = {
     '/world-time': {
         target: `${httpsProxyTarget.protocol}://worldtimeapi.org:${httpsProxyTarget.port}`,
         pathRewrite: pathRewrite('^/world-time/test', '/api'),

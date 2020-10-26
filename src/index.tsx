@@ -1,9 +1,6 @@
 /**
  * Created by: Andrey Polyakov (andrey@polyakov.im)
  */
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
-
 import '@styles/styles.less';
 import '@styles/styles.scss';
 

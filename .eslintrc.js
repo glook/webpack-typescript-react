@@ -25,7 +25,7 @@ module.exports = {
         // e.g. "@typescript-eslint/explicit-function-return-type": "off",
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
-
+        '@typescript-eslint/ban-ts-comment': 'off',
         // These rules don't add much value, are better covered by TypeScript and good definition files
         'react/no-direct-mutation-state': 'off',
         'react/no-deprecated': 'off',
