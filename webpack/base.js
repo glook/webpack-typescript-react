@@ -13,7 +13,7 @@ import {arrayFilterEmpty} from './utils/helpers';
 
 export default {
     context: __dirname,
-    target: ['web', 'es5'],
+    target: isDevServer ? 'web' : ['web', 'es5'],
     mode: isProd ? 'production' : 'development',
     entry,
     output: {
