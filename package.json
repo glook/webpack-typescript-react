@@ -53,6 +53,7 @@
         "@teamsupercell/typings-for-css-modules-loader": "~2.4.0",
         "@typescript-eslint/eslint-plugin": "~4.7.0",
         "@typescript-eslint/parser": "~4.7.0",
+        "@webpack-cli/serve": "^1.1.0",
         "autoprefixer": "~10.0.1",
         "babel-eslint": "~10.1.0",
         "babel-loader": "~8.2.1",
