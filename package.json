@@ -1,6 +1,6 @@
 {
     "name": "webpack-typescript-react",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Webpack 5 boilerplate with support of most common loaders and modules",
     "keywords": [
         "react",
