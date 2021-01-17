@@ -1,6 +1,6 @@
 {
     "name": "webpack-typescript-react",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Webpack 5 boilerplate with support of most common loaders and modules",
     "keywords": [
         "react",
@@ -19,7 +19,8 @@
     "scripts": {
         "build": "webpack --config webpack.config.babel.js",
         "profile": "webpack --profile --json --config webpack.config.babel.js > ./dist/profile.json && webpack-bundle-analyzer ./dist/profile.json",
-        "start": "webpack serve --env mode=dev --env isDevServer --env NODE_ENV=local --config webpack.config.babel.js"
+        "start": "webpack serve --env mode=dev --env isDevServer --env NODE_ENV=local --config webpack.config.babel.js",
+        "release": "npm version patch"
     },
     "husky": {
         "hooks": {
@@ -53,7 +54,6 @@
         "@teamsupercell/typings-for-css-modules-loader": "~2.4.0",
         "@typescript-eslint/eslint-plugin": "~4.7.0",
         "@typescript-eslint/parser": "~4.7.0",
-        "@webpack-cli/serve": "^1.1.0",
         "autoprefixer": "~10.0.1",
         "babel-eslint": "~10.1.0",
         "babel-loader": "~8.2.1",
