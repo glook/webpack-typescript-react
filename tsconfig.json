@@ -2,7 +2,7 @@
     "compilerOptions": {
         "outDir": "./dist",
         "module": "esnext",
-        "target": "es5",
+        "target": "es6",
         "lib": ["es6", "dom"],
         "sourceMap": true,
         "allowJs": true,
@@ -23,7 +23,9 @@
         },
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
-        "importsNotUsedAsValues": "preserve"
+        "importsNotUsedAsValues": "preserve",
+        "incremental": true
     },
-    "exclude": ["node_modules", "webpack"]
+    "include": ["src"],
+    "exclude": ["**/node_modules", "**/.*/"]
 }

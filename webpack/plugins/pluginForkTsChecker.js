@@ -13,7 +13,6 @@ const config = {
         configFile: join(rootDir, '/tsconfig.json'),
     },
     eslint: {enabled: true, files: '../src/**/*.{ts,tsx,js,jsx}'},
-    logger: {infrastructure: 'silent', issues: 'console'},
 };
 
 export const forkTsCheckerWebpackPlugin = new ForkTsCheckerWebpackPlugin(

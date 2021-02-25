@@ -1,13 +1,9 @@
 /**
  * Created by: Andrey Polyakov (andrey@polyakov.im)
  */
-const {argv} = require('yargs');
 
 module.exports = (api) => {
-    const env = argv.env || [];
-    const mode = !!env.find((value) => value === 'mode=dev')
-        ? 'development'
-        : 'production';
+    const mode = process.env.NODE_ENV ?? 'production';
 
     // This caches the Babel config by environment.
     api.cache.using(() => mode);
