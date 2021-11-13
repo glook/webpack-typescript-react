@@ -8,8 +8,7 @@ module.exports = {
     },
     extends: [
         'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
-        'prettier/@typescript-eslint', // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
-        'prettier/react', // disables react-specific linting rules that conflict with prettier
+        'prettier',
     ],
     parserOptions: {
         project: path.resolve(__dirname, './tsconfig.json'),
