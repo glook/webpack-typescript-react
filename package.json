@@ -29,13 +29,10 @@
         }
     },
     "dependencies": {
-        "@types/classnames": "^2.2.10",
-        "@types/react": "^16.9.53",
-        "@types/react-dom": "^16.9.8",
-        "classnames": "^2.2.6",
+        "classnames": "^2.3.1",
         "normalize.css": "^8.0.1",
-        "react": "^17.0.1",
-        "react-dom": "^17.0.1"
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
     },
     "devDependencies": {
         "@babel/core": "~7.12.3",
@@ -52,6 +49,9 @@
         "@pmmmwh/react-refresh-webpack-plugin": "^0.5.1",
         "@svgr/webpack": "^5.5.0",
         "@teamsupercell/typings-for-css-modules-loader": "^2.5.1",
+        "@types/classnames": "^2.3.1",
+        "@types/react": "^17.0.34",
+        "@types/react-dom": "^17.0.11",
         "@typescript-eslint/eslint-plugin": "~4.7.0",
         "@typescript-eslint/parser": "~4.7.0",
         "autoprefixer": "^10.4.0",
@@ -99,7 +99,7 @@
         "svg-url-loader": "^7.1.1",
         "terser-webpack-plugin": "^5.2.5",
         "ts-loader": "^9.2.6",
-        "typescript": "~4.0.3",
+        "typescript": "^4.4.4",
         "url-loader": "^4.1.1",
         "webpack": "^5.64.0",
         "webpack-bundle-analyzer": "^4.5.0",
