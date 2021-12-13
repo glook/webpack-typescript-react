@@ -13,12 +13,16 @@ const devServerHost = isWindows() ? '127.0.0.1' : '0.0.0.0';
 export const devServerUrl = `http://${devServerHost}:${defaultPort}/`;
 
 export const devServerConfig = {
-    publicPath: '/',
-    port: defaultPort,
-    historyApiFallback: true,
+    client: {
+        overlay: false,
+    },
     headers: {'Access-Control-Allow-Origin': '*'},
-    proxy: devServerProxyConfig,
-    hot: true,
-    overlay: false,
+    historyApiFallback: true,
     host: devServerHost,
+    hot: true,
+    port: defaultPort,
+    proxy: devServerProxyConfig,
+    static: {
+        publicPath: '/',
+    },
 };
