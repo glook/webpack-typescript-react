@@ -4,6 +4,7 @@ declare namespace AppModuleScssNamespace {
     export interface IAppModuleScss {
         stylesHeader: string;
         stylesImage: string;
+        stylesLink: string;
     }
 }
 
