@@ -20,7 +20,9 @@
         "build": "cross-env NODE_ENV=production webpack --config webpack.config.babel.js",
         "profile": "cross-env NODE_ENV=production webpack --profile --json --config webpack.config.babel.js > ./dist/profile.json && webpack-bundle-analyzer ./dist/profile.json",
         "start": "cross-env WEBPACK_IS_DEV_SERVER=true NODE_ENV=development webpack serve --config webpack.config.babel.js",
-        "release": "npm version patch"
+        "release": "npm version patch --force",
+        "prerelease": "npm run update-hooks",
+        "update-hooks": "npx simple-git-hooks"
     },
     "simple-git-hooks": {
         "pre-commit": "npx lint-staged",
