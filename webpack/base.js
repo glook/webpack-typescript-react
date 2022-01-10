@@ -3,7 +3,7 @@
  */
 import path from 'path';
 
-import {aliasItems, devServerUrl, externalItems} from './config';
+import {aliasItems, externalItems} from './config';
 import entry from './entry';
 import optimization from './optimization';
 import * as plugins from './plugins';
@@ -18,7 +18,7 @@ export default {
     entry,
     output: {
         path: path.join(__dirname, '../dist'),
-        publicPath: isDevServer ? devServerUrl : './',
+        publicPath: isDevServer ? undefined : './',
         filename: isDevServer
             ? '[name].[fullhash].js'
             : '[name].[contenthash].js',
