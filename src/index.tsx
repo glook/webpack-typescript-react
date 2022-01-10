@@ -1,3 +1,4 @@
+import '@styles/styles.css';
 /**
  * Created by: Andrey Polyakov (andrey@polyakov.im)
  */

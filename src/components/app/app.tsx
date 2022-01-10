@@ -5,6 +5,7 @@
 import cn from 'classnames';
 import React, {Suspense, lazy} from 'react';
 
+import packageJson from '../../../package.json';
 import {stylesContainer} from './app.module.less';
 import {stylesHeader, stylesImage, stylesLink} from './app.module.scss';
 
@@ -21,7 +22,7 @@ export const App = (): React.ReactElement => (
                 href="https://github.com/glook/webpack-typescript-react"
                 target="_blank"
             >
-                @glook/webpack-typescript-react
+                @glook/webpack-typescript-react ({packageJson.version})
             </a>
         </div>
     </div>

@@ -15,6 +15,8 @@ const httpsProxyTarget = {
 };
 
 export const devServerProxyConfig = {
+    /*
+    // Example proxy configuration endpoins
     '/world-time': {
         target: `${httpsProxyTarget.protocol}://worldtimeapi.org:${httpsProxyTarget.port}`,
         pathRewrite: pathRewrite('^/world-time/test', '/api'),
@@ -27,4 +29,5 @@ export const devServerProxyConfig = {
         changeOrigin: true,
         secure: false,
     },
+    */
 };
